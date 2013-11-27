@@ -7,9 +7,8 @@ WIDTH = 640
 HEIGHT = 640
 
 class Draw_a_matrix:
-    TCP_IP = 'localhost'
+    TCP_IP = '127.0.0.1'
     TCP_PORT = 5005
-    buffer_size = 4096 
     
     def __init__(self):
         self.top_window = Tk()
@@ -22,8 +21,8 @@ class Draw_a_matrix:
             print 'Failed to create socket'
             sys.exit()
         self.drawer.start()
-        self.sock.bind((self.TCP_IP, self.TCP_PORT))
-        self.sock.listen(5)
+        self.sock.connect((self.TCP_IP, self.TCP_PORT))
+        self.sock.send("wyskakuj z mapy")
 
     class Drawing_thread(Thread):
         def __init__(self, controller):
@@ -33,8 +32,7 @@ class Draw_a_matrix:
 
         def run(self):
             while 1:
-                conn,addr = self.controller.sock.accept()
-                data = conn.recv(self.controller.buffer_size)
+                data = self.controller.sock.recv(4096)
                 parsed_data = self.controller.parse_list_from_string(data)
                 self.columns = parsed_data[0]
                 self.rows = parsed_data[1] 

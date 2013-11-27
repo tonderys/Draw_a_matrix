@@ -14,7 +14,10 @@ class Matrix_sender:
             for j in  range(0, columns):
                 message = message + "%d "%random.randrange(0,3,1)
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.s.connect((self.TCP_IP, self.TCP_PORT))
+        self.s.bind((self.TCP_IP, self.TCP_PORT))
+        self.s.listen(5)
+        conn,addr = self.s.accept()
+        data = conn.recv(4096)
         self.s.send(message)
         print message
         self.s.close()
