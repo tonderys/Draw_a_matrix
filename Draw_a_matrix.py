@@ -36,12 +36,22 @@ class Draw_a_matrix:
                 pixel_height = HEIGHT / self.rows
                 for y in range (0, self.rows):
                     for x in range (0, self.columns):
-                        if parsed_data[y * self.columns + x + 2] == 0:
-                            color = 'white'
-                        if parsed_data[y * self.columns + x + 2] == 1:
-                            color = 'black'
-                        if parsed_data[y * self.columns + x + 2] == 2:
-                            color = 'green'
+                        try:
+                            if parsed_data[y * self.columns + x + 2] == 0:
+                                color = 'white'
+                            if parsed_data[y * self.columns + x + 2] == 1:
+                                color = 'black'
+                            if parsed_data[y * self.columns + x + 2] == 2:
+                                color = 'green'
+                        except IndexError:
+                            print " "
+                            print "VVVVVVVVVVV"
+                            print self.rows
+                            print self.columns
+                            print x
+                            print y
+                            print "^^^^^^^^^^^^"
+                            print " "
                         Y = y * pixel_height
                         X = x * pixel_width
                         self.controller.canvas.create_rectangle(Y, X, Y + pixel_height, X + pixel_width, fill=color)
