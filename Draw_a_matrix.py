@@ -18,7 +18,7 @@ class Draw_a_matrix:
         while 1:
             self.sock.sendall("wyskakuj z mapy")
             data = self.sock.recv(4096)
-            parsed_data = self.controller.parse_list_from_string(data)
+            parsed_data = self.parse_list_from_string(data)
             self.columns = parsed_data[0]
             self.rows = parsed_data[1] 
             pixel_width = WIDTH / self.columns
@@ -33,7 +33,7 @@ class Draw_a_matrix:
                         color = 'green'
                     Y = y * pixel_height
                     X = x * pixel_width
-                    self.controller.canvas.create_rectangle(Y, X, Y + pixel_height, X + pixel_width, fill=color)
+                    self.canvas.create_rectangle(Y, X, Y + pixel_height, X + pixel_width, fill=color)
             sleep(1)
 
     def parse_list_from_string(self, string):
