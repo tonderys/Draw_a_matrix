@@ -37,11 +37,11 @@ class Draw_a_matrix:
                 for y in range (0, self.rows):
                     for x in range (0, self.columns):
                         try:
-                            if parsed_data[y * self.columns + x + 2] == 0:
+                            if parsed_data[y * (self.columns-1) + x + 2] == 0:
                                 color = 'white'
-                            if parsed_data[y * self.columns + x + 2] == 1:
+                            if parsed_data[y * (self.columns-1) + x + 2] == 1:
                                 color = 'black'
-                            if parsed_data[y * self.columns + x + 2] == 2:
+                            if parsed_data[y * (self.columns-1) + x + 2] == 2:
                                 color = 'green'
                         except IndexError:
                             print " "
@@ -52,7 +52,7 @@ class Draw_a_matrix:
                             print y
                             print "^^^^^^^^^^^^"
                             print " "
-                        Y = y * pixel_height
+                        Y = self.rows - y * pixel_height
                         X = x * pixel_width
                         self.controller.canvas.create_rectangle(Y, X, Y + pixel_height, X + pixel_width, fill=color)
                 sleep(1)
