@@ -19,7 +19,7 @@ class Draw_a_matrix:
         self.drawer = self.Draw(self)
         self.drawer.start()
 
-        class Draw (Threading):
+        class Draw(Thread):
             def __init__(self, controller):
                 Thread.__init__(self)
                 self.controller = controller
