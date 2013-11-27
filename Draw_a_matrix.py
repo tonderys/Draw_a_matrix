@@ -15,6 +15,7 @@ class Draw_a_matrix:
         self.canvas.grid(row = 0, column = 0)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect((self.TCP_IP, self.TCP_PORT))
+        self.top_window.mainloop()
         while 1:
             self.sock.sendall("wyskakuj z mapy")
             data = self.sock.recv(4096)
@@ -40,4 +41,3 @@ class Draw_a_matrix:
         return [int(s) for s in string.split() if s.isdigit()]
 
 matrix_drawer = Draw_a_matrix()
-matrix_drawer.top_window.mainloop()
