@@ -31,7 +31,7 @@ class Draw_a_matrix:
 
         def run(self):
             while 1:
-                self.controller.sock.send("wyskakuj z mapy")
+                self.controller.sock.sendall("wyskakuj z mapy")
                 #data = self.controller.sock.recv(4096)
                 #parsed_data = self.controller.parse_list_from_string(data)
                 #self.columns = parsed_data[0]
