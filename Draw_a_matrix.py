@@ -32,6 +32,12 @@ class Draw_a_matrix:
                 parsed_data = self.controller.parse_list_from_string(data)
                 self.columns = parsed_data[0]
                 self.rows = parsed_data[1] 
+
+                if self.columns == 0:
+                    continue
+                if self.rows == 0:
+                    continue
+
                 pixel_width = WIDTH / self.columns
                 pixel_height = HEIGHT / self.rows
                 for y in range (0, self.rows):
