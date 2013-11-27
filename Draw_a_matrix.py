@@ -51,3 +51,4 @@ class Draw_a_matrix:
         return [int(s) for s in string.split() if s.isdigit()]
 
 matrix_drawer = Draw_a_matrix()
+matrix_drawer.top_window.mainloop()
