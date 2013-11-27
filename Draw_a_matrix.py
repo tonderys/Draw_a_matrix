@@ -16,7 +16,7 @@ class Draw_a_matrix:
         self.canvas.grid(row = 0, column = 0)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect((self.TCP_IP, self.TCP_PORT))
-        self.drawer = Draw(self)
+        self.drawer = self.Draw(self)
         self.drawer.start()
 
         class Draw (Threading):
