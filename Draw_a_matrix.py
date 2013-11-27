@@ -7,8 +7,8 @@ WIDTH = 640
 HEIGHT = 640
 
 class Draw_a_matrix:
-    TCP_IP = '127.0.0.1'
-    TCP_PORT = 5005
+    TCP_IP = '192.168.56.2'
+    TCP_PORT = 10001
     
     def __init__(self):
         self.top_window = Tk()
