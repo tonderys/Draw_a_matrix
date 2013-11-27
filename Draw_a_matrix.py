@@ -21,6 +21,7 @@ class Draw_a_matrix:
             print 'Failed to create socket'
             sys.exit()
         self.drawer.start()
+        self.sock.connect((self.TCP_IP, self.TCP_PORT))
 
     class Drawing_thread(Thread):
         def __init__(self, controller):
@@ -30,8 +31,7 @@ class Draw_a_matrix:
 
         def run(self):
             while 1:
-                self.controler.sock.connect((self.TCP_IP, self.TCP_PORT))
-                self.controler.sock.send("wyskakuj z mapy")
+                self.controller.sock.send("wyskakuj z mapy")
                 data = self.controller.sock.recv(4096)
                 parsed_data = self.controller.parse_list_from_string(data)
                 self.columns = parsed_data[0]
