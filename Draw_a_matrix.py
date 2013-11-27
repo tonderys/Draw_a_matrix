@@ -49,7 +49,7 @@ class Draw_a_matrix:
                         Y = y * pixel_height
                         X = x * pixel_width
                         self.controller.canvas.create_rectangle(Y, X, Y + pixel_height, X + pixel_width, fill=color)
-                #conn.close()
+                conn.close()
                 sleep(1)   
 
 
