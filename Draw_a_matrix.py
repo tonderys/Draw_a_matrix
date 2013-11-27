@@ -1,7 +1,6 @@
 from Tkinter import *
 from time import *
 import socket
-from threading import Thread
 
 WIDTH = 640
 HEIGHT = 640
@@ -14,7 +13,6 @@ class Draw_a_matrix:
         self.top_window = Tk()
         self.canvas = Canvas(self.top_window, width = WIDTH, height = HEIGHT)
         self.canvas.grid(row = 0, column = 0)
-        self.drawer = self.Drawing_thread(self)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect((self.TCP_IP, self.TCP_PORT))
         while 1:
